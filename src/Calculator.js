@@ -7,7 +7,8 @@ class Calculator extends React.Component {
             num1: 0,
             num2: 0,
             result: 0
-        }
+        };
+
     }
     render() {
         return (
@@ -17,20 +18,24 @@ class Calculator extends React.Component {
                     type="number"
                     value={this.state.num1} 
                     onChange={(event) => { 
-                        this._updateNumber('num1', event.target.value)}  }  
+                        this._updateNumber('num1', event.target.value);
+                    }}
                     />  
                 <input 
                     type="number"
                     value={this.state.num2} 
-      
-            />       
+                    onChange={(event) => { 
+                        this._updateNumber('num2', event.target.value)}  }  
+                    />  
             <br></br>
+            <button onClick={this._add}>+</button>
+            <button onClick={this._sub}>-</button>
+            <button onClick={this._div}>/</button>
+            <button onClick={this._mult}>*</button>
             <br></br>
-            <button>+</button>
-            <button>-</button>
-            <button>/</button>
-            <button>*</button>
-            <div></div>
+
+                    
+                <div>{this.state.result}</div>
             </div>
         );
 
@@ -38,11 +43,43 @@ class Calculator extends React.Component {
 
     _updateNumber = (key, newNumber) => {
         this.setState({
-            [key]: newNumber
+            [key]: parseInt(newNumber, 10)
 
         });
     }
 
+    _add = () => {
+        const result = this.state.num1 + this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+
+    _sub = () => {
+        const result = this.state.num1 - this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+
+    _div = () => {
+        const result = this.state.num1 / this.state.num2
+        this.setState({
+            result
+
+        });
+    }
+
+
+    _mult = () => {
+        const result = this.state.num1 * this.state.num2
+        this.setState({
+            result
+
+        });
+    }
 
 }
 
